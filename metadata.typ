@@ -1,17 +1,17 @@
 #let details = (
-  title: "Titel der Arbeit",
+  title: "Deep learning lung registration",
   date: "29. Feburar 2024",
   language: "de",
-  degree: "Bachelor",
+  degree: "Master",
   field: "Angewandte Informatik",
   fontSize: 12pt,
   doubleSided: true,
   author: (
-    name: "Max Mustermann",
+    name: "Jamie Christopher Temple",
     role: "Autor",
     details: (
-      "Matrikelnummer", 
-      "Email Adresse"
+      "1717113", 
+      "jamie.temple@stud.hs-hannover.de"
     ),
   ),
   examiners: (
