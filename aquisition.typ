@@ -245,8 +245,6 @@ Later understood as cycle concitency
 - solving equations for registrations is computationally expensive
 - *goal:* replace solving ODE with neural network for faster registration
 - *requirement:* cannot sacrifice accuracy of current method
-- *optional:* another approach than STN
-
-= Method
+- *optional:* another approach than transformer
 
 #bibliography("references.bib")

@@ -1,9 +1,9 @@
 #let details = (
   title: "Deep learning lung registration",
   date: "29. Feburar 2024",
-  language: "de",
+  language: "en",
   degree: "Master",
-  field: "Angewandte Informatik",
+  field: "Applied Informatics",
   fontSize: 12pt,
   doubleSided: true,
   author: (
