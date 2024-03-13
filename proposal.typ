@@ -4,58 +4,114 @@
 #show: body => project(details, body)
 
 #set heading(numbering: "1.1")
+
 = Introduction
 
-Medical imaging is essential for diagnosis and treatment planning, with magnetic resonance imaging (MRI) playing a crucial role.
-In pneumonology, pulmonary MRI scans offer valuable insights @sodhi2021.
-However, respiratory motion during imaging can introduce artefacts that complicate analysis.
-Image registration aligns multiple scans for improved diagnostic accuracy.
+Medical imaging is vital in diagnostics and treatments, especially magnetic resonance (MR) imaging due to non-ionising radiation.
+Pulmonary MR scans offer valuable insights @sodhi2021.
+However, respiratory motion introduces artefacts spatially and temporally.
+Hence, one employs image registration to align multiple MR images for diagnostics.
 
-While effective traditional registration techniques can be computationally expensive @fan2019, deep learning has demonstrated potential for faster and more accurate image analysis tasks @dirnet2017 @voxelmorph2019 @cyclemorph2020 @vitvnet2021 @transmorph2022.
-This thesis explores the application of deep learning for the automatic registration of pulmonary MRI images.
-The goal is to identify a deep learning framework that offers both accuracy comparable to traditional methods and the computational efficiency desired for faster clinical workflows.
+Traditional registration techniques are computationally expensive @fan2019 @SyN2010 and are a time-consuming operation.
+On the other hand, deep learning techniques demonstrated to be potentially faster and more accurate @dirnet2017 @voxelmorph2019 @cyclemorph2020 @vitvnet2021 @transmorph2022 than traditional state-of-the-art.
+
+This thesis explores the application of deep learning for the automatic registration of pulmonary MR images.
+The goal is to identify a deep learning framework that offers accuracies comparable to traditional methods, efficient computational processing for faster clinical workflows, and the ability to handle respiratory motion artefacts effectively during image registration.
 
 = Problem
 
-Medical imaging is essential in modern diagnostics.
-Magnetic resonance imaging (MRI) is a commonly used technique to examine various medical conditions in patients.
-One such field is pneumonology, where pulmonary images are used for diagnosis.
-However, after a scan, MR images have respiratory motion, which is an issue for an accurate diagnosis @SyN2010.
-Additionally, non-linear motions, non-stationary noise and intensity inhomogeneity increase the complexity of the problem @SyN2008. 
-Therefore, one has to perform a registration to align an image series.
-These registered images are necessary for physicians and other systems to perform any diagnostics @Voskrebenzev2017.
+MR images have non-linear respiratory motion, an issue for diagnostics @SyN2010.
+Moreover, non-stationary image noise and image intensity inhomogeneity increase the complexity of the problem @SyN2008.
+Consequently, the registration process has to be robust against these issues and align an image series with minimal error. 
 
-The process of aligning images is critical @SyN2008 @SyN2010.
-Yet, classical techniques are computationally expensive @SyN2010 @dirnet2017, leading to time-consuming operations.
-To overcome this challenge, researchers have suggested using deep learning techniques @dirnet2017 @voxelmorph2019 @cyclemorph2020 @vitvnet2021 @transmorph2022, which have proven effective in addressing the computational obstacles. 
-Despite advancements in deep learning models, challenges persist because the models need to learn non-trivial relationships while dealing with temporal and spatial variations during the respiratory cycle and missing anatomical structural information in MR images.
-
-As a result, traditional methods still provide comparable results to deep learning techniques in some cases.
+In the past decade, researchers have suggested using deep learning techniques to address computational costs @dirnet2017 @voxelmorph2019 @cyclemorph2020 @vitvnet2021 @transmorph2022.
+Besides the fast registration, deep learning models are required to approximate the respiratory motion well for an accurate non-linear deformation of the images with temporal and spatial dependencies.
+Additionally, training is unsupervised as anatomical structural information is often not provided.
+As a result, traditional methods still provide comparable results to deep learning techniques.
 
 = Motivation
 
-Advancements in technology allow for modern diagnostics, enabling physicians to provide better, more reasonable diagnoses, which ultimately benefit patients in their treatment.
-The paper @Voskrebenzev2017 presented a method called Phase-Resolved Functional Lung (PERFUL) MRI.
+Advancements in technology allow for modern diagnostics, enabling physicians to provide better, more reasonable diagnoses, ultimately benefiting patients in their treatment.
+The paper @Voskrebenzev2017 presented a method called Phase-Resolved Functional Lung (PERFUL) MR imaging.
 They demonstrated the feasibility of deriving the mapping of perfusion and ventilation in pulmonary images without radiation and contrasting agents, and patients can continue breathing normally.
-Therefore, there is an interest in using it for clinical pulmonary tests.
+Therefore, there is an interest in using it for clinical workflows.
 
-The method relies on automatic processing, where image registration is the most time-consuming.
+The method relies on automatic processing, where image registration is the most time-consuming step.
 Minimising the time would lead to a faster output of diagnostic images and potentially better diagnosis response times.
-Convolutional networks (CNN) @dirnet2017 @voxelmorph2019 @cyclemorph2020 and transformers @vitvnet2021 @transmorph2022 demonstrated similar performance to classical registration methods @SyN2008 due to their ability to learn complex patterns.
-Of course, these deep-learning methods require training; however, they can register images in seconds or less in a single pass @dirnet2017 @voxelmorph2019 @cyclemorph2020 @vitvnet2021 @transmorph2022.
-
-Automated registration is a crucial image processing step, which can be time-consuming @SyN2010. 
-Recent studies in other medical fields by @dirnet2017 @voxelmorph2019 @cyclemorph2020 using convolutional networks (CNN) and @vitvnet2021 @transmorph2022 using hybrid-networks (CNN and transformer) have demonstrated outcomes comparable to traditional registration methods @SyN2008 @SyN2010.
-The success of these deep-learning approaches is due to their ability to identify intricate patterns. 
-Even using the central processing unit (CPU), they can register images in seconds with just one pass, and one can reduce the time even more by employing a graphics processing unit (GPU).
+Recent studies in other medical fields, such as neuroimaging and cardiology, using convolutional networks (CNN) @voxelmorph2019 and hybrid networks (CNN and transformer) @transmorph2022 demonstrated comparable registration accuracy to traditional registration methods @SyN2008.
+Moreover, they showed that these models can register images in seconds with just one pass using a central processing unit (CPU).
+One can reduce the time further by employing a graphics processing unit (GPU).
 
 = Objective
 
 The objective of the master thesis is to determine a deep-learning framework for automatic image registration.
 The essential criterion is that the machine learning (ML) models show comparable performance regarding registration accuracy and error.
-Not meeting the criterion would lead to exclusion in a clinical context.
+Not meeting the criteria would lead to exclusion in a clinical context.
 Ideally, we identify an ML architecture that surpasses the traditional approach while offering the advantage of being computationally efficient, using a moderately complex model.
 
 = Schedule
 
-...
+*Foundation and Baseline -- 4 Weeks*
+
+- Revise deep-learning foundations
+- Select network architecture -- define criteria for selection
+- Identify loss metrics -- highly dependent on the selected architecture
+- Implement the network -- yields a baseline model
+
+*Improvement -- 6 Weeks*
+
+- Select a concept to extend the baseline
+- Implement the concept -- analyse the change in performance, determine the effect
+- Compare improvement to baseline and previous model
+
+*Optimization -- 2 Weeks*
+
+- Tune hyperparameters -- find the optimal setting for the best model 
+- Parameter reduction
+- Fine-tuning -- additional training with a lower learning rate
+
+*Evaluation -- 4 Weeks*
+
+- Generate prediction and compare it to the traditional method
+- Qualitative analysis -- check differences in deformation
+- Quantitative analysis -- DICE (segmentation) and Jacobian
+
+= Neural Networks
+
+*CNNs*
+
+@voxelmorph2019
+
+@cyclemorph2020
+
+@davoxelmorph2022
+
+*Hybrid*
+
+@vitvnet2021
+
+@transmorph2022
+
+*GANs*
+
+@gan2019
+
+*Comparison*
+
+#figure(
+  caption: [@reviewA],
+  table(
+    columns: (auto, auto, auto, auto),
+    inset: 12pt,
+    align: horizon,
+    [*Network*], [*CNN*], [*Transformer*], [*GAN*],
+    [_Parameters (approx)_], [19M], [46M], [11M],
+    [_Modality_], [monomodality], [monomodality (multimodality not shown)], [multimodality],
+    [_Used for Lung Registration_], [yes], [yes], [yes],
+    [_Attention_], [optional], [yes], [no],
+  )
+)
+
+- CNNs are established @reviewA @reviewB
+- Transformers are novel @reviewA but potentially better then CNNs @transmorph2022
+- GANs are promising with results but not well established + concerns regarding output validity @reviewA
