@@ -5,7 +5,7 @@
   degree: "Master",
   field: "Applied Informatics",
   fontSize: 12pt,
-  doubleSided: true,
+  doubleSided: false,
   author: (
     name: "Jamie Christopher Temple",
     role: "Autor",

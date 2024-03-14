@@ -49,7 +49,7 @@
 
   cover(details)
 
-  set page(numbering: "I", number-align: left)
+  set page(numbering: "I", number-align: center)
   counter(page).update(1) 
 
   disclaimer(details)
@@ -88,11 +88,12 @@
       let query_after = query(heading.where(level: 1).after(loc), loc)
 
       if (query_after.len() != 0 and 
-          query_after.first().location().page() == loc.page()) {
+          (query_after.first().location().page() == loc.page() or
+          query_before.last().location().page() == loc.page())) {
         return
       }
 
-      if (query_before.last() != 0 and 
+      if (query_before.len() != 0 and 
           query_before.last().outlined) {[
         #align(center, query_before.last().body)
         #line(length: 100%, stroke: .5pt + black)

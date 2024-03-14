@@ -19,8 +19,8 @@ As a result, traditional methods still provide comparable results to deep learni
 
 = Objective
 
-The objective of the master thesis is to determine a deep-learning framework for automatic image registration.
-The essential criterion is that the machine learning (ML) models show comparable performance regarding registration accuracy and error.
+The objective of the master thesis is to determine a deep-learning framework/architecture for automatic image registration.
+The essential criterion is that the machine learning (ML) model show comparable performance regarding registration accuracy and error.
 Not meeting the criteria would lead to exclusion in a clinical context.
 Ideally, we identify an ML architecture that surpasses the traditional approach while offering the advantage of being computationally efficient, using a moderately complex model.
 
@@ -68,7 +68,7 @@ Although the results strongly indicate a flexible technique with exceptional gen
 == Hybrids
  
 `ViT-V-Net` @vitvnet2021 addressed the limitations of CNNs regarding long-range spatial relations.
-Yes, purely using vision transformers is unfeasible due to large volumes, making computations expensive.
+Yet, using vision transformers is unfeasible due to large volumes, making computations expensive.
 Therefore, they used CNNs to encode images, providing low-resolution, high-level features.
 These features get a positional embedding, which is then passed to the transformer.
 A VNet @vnet2016 decodes the output.
@@ -99,7 +99,7 @@ Convolutional networks are a well-established computer vision approach @reviewA 
 They are lightweight and achieve acceptable performance.
 Transformers are novel @reviewA and potentially better than CNNs @transmorph2022.
 The critical factor is attention, which helps these networks to focus on essential parts of an image and understand spatial relationships.
-GANs are promising with results but not well established, and the authors @reviewA expressed their concerns regarding output validity.
+GANs are promising but not well established, and the authors @reviewA expressed their concerns regarding output validity.
 
 = Schedule
 
@@ -127,3 +127,37 @@ GANs are promising with results but not well established, and the authors @revie
 - Generate prediction and compare it to the traditional method
 - Qualitative analysis -- check differences in deformation
 - Quantitative analysis -- DICE (segmentation) and Jacobian
+
+= Structure
+
++ Introduction
+  + Problem
+  + Motivation
+  + Objectives
+  + Outline
++ Background
+  + Deep learning
+  + Convolutional networks
++ Related work
++ Methodology
++ Experiment
+  + Baseline
+    + Theory (Theoretical foundation of the baseline model)
+    + Implementation (Key implementation details)
+    + Result (Present baseline performance)
+  + Change N
+    + Theory (Explain the theoretical basis for the modification)
+    + Implementation (How the change was implemented)
+    + Result (Performance after the change)
++ Evaluation
+  + Objectives
+  + results
+  + Findings
+  + Discussion
+  + Limitations
++ Summary
+  + Status
+    + Realized Goals
+    + Open Goals
+  + Conclusion
+  + Future Work
