@@ -8,6 +8,7 @@
     title: details.title,
     author: details.author.name,
   )
+
   set page(
     paper: "a4",
     margin: (x: 25mm, y: 35mm),
@@ -46,7 +47,12 @@
     indent: 2em
   )
 
-  pagebreak()
+  set par(leading: 0.65em, justify: true)
+
+  show heading.where(level:1): chapter => [
+    #set text(size: 2 * details.fontSize)
+    #chapter
+  ]
 
   set page(
     header: locate(loc => {
@@ -88,6 +94,5 @@
 
   body
 
-  pagebreak()
   bibliography("../references.bib")
 }

@@ -1,6 +1,6 @@
 #let details = (
   title: "Deep learning lung registration",
-  date: "29. Feburar 2024",
+  date: "14th March 2024",
   language: "en",
   degree: "Master",
   field: "Applied Informatics",
