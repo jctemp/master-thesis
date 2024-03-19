@@ -133,11 +133,12 @@ GANs are promising but not well established, and the authors @reviewA expressed 
 + Introduction
   + Problem
   + Motivation
-  + Objectives
+  + Objectives and requirements
   + Outline
 + Background
+  + Registration
   + Deep learning
-  + Convolutional networks
+  + Vision Transformer
 + Related work
 + Methodology
 + Experiment
@@ -151,7 +152,7 @@ GANs are promising but not well established, and the authors @reviewA expressed 
     + Result (Performance after the change)
 + Evaluation
   + Objectives
-  + results
+  + Results
   + Findings
   + Discussion
   + Limitations
