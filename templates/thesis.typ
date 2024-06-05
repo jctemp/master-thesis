@@ -43,7 +43,7 @@
 
   set par(leading: 0.65em, justify: true)
 
-  set cite(style: "alphanumeric", form: "full")
+  set cite(style: "alphanumeric", form: "normal")
 
   // ============================================================================
 
