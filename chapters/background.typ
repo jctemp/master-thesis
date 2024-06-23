@@ -11,19 +11,24 @@ The goal of these methods is to automatically find a solution, whether exact or 
 The solution is derived based on given data without explicit instructions, making it highly declarative.
 From a mathematical perspective, one aims to find a mapping $f: A -> B$, describing the task where the domain $A$ and the range $B$ can be arbitrary @mitchellDisciplineMachineLearning2006 @lecunDeepLearning2015. 
 An objective function $cal(F): (f, D) -> RR$ is then used to assess the quality of the function mapping, and based on this information, $f$'s internal state is iteratively modified to optimise its performance towards the objective function.
-This iterative process is then described by a learning algorithm $cal(A): D -> f$,  drawing a function candidate $f$ from its hypothesis space $cal(H)$, yielding the desired mapping based on sampled data $D$. 
+An iterative optimisation procedure is then applied to a learning algorithm $cal(A): D -> f$,  drawing a function candidate $f$ from its hypothesis space $cal(H)$, yielding the desired mapping based on sampled data $D$. 
 Note that the hypothesis space is a set of all possible functions according to a learning algorithm $cal(A)$.
 Furthermore, example $D$ is drawn from data distributions such as $p(A)$ or $p(A, B)$, determining the learning strategy (e.g., supervised or unsupervised learning), which we explain later.
 As a final remark, the process of adapting the function's behaviour based on examples is what we refer to as learning @dehouwerWhatLearningNature2013.
 
 === Neural networks
 
-In the context of this thesis, we will work with neural networks inspired by neuroscience @goodfellowDeepLearning2016.
-Nowadays, one recognises these networks as universal approximators for any measurable function @hornikMultilayerFeedforwardNetworks1989, achieving statistical generalisation @goodfellowDeepLearning2016. They are composed of computational units called neurons.
-These neurons take some input vector $bold(x)$ and linearly transform them using weights $bold(w)$ and a bias $b$.
-Note that we utilise $bold(theta)$ to represent the parameters of a neural network.
-The linearly transformed output then passes through a non-linear function, e.g. a sigmoid, to project the new high-dimensional input space to make it potentially linearly separable @lecunDeepLearning2015.
-Accordingly, finding the optimal projection requires a systematic strategy given by a learning algorithm $cal(A)$ like gradient descent. 
+Neural networks are one of the many techniques used in machine learning.
+They are inspired by neurons observed in neurological systems in nature @goodfellowDeepLearning2016
+Neurons experience excitement (input), causing a reaction (output), which can be mathematically defined as seen in @neuron.
+Nowadays, these networks are recognised as a universal approximator for any measurable function @hornikMultilayerFeedforwardNetworks1989, achieving statistical generalisation. 
+A neuron has an input vector $bold(x)$, which undergoes a linear transformation with learnable weights $bold(w)$ and a bias $b$. 
+The transformation projects the input to a new high-dimensional space passed to an activation function.
+The activation function is non-linear, like sigmoid tanh and rectified linear unit (ReLU), which is crucial as it makes the output potentially linearly separable for other neurons.
+
+$
+bold(a) &= sigma(bold(x) bold(w)^top + b)
+$ <neuron>
 
 === Gradient descent
 
