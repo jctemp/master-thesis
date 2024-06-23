@@ -6,17 +6,15 @@ We then discuss medical image registration, aligning two or more images of the s
 
 == Machine learning
 
-Machine learning is an essential tool in modern computer science, offering numerous methods for analysing and processing large amounts of data. 
-The critical difference to classical software engineering is the highly declarative nature of these methods.
-Declarative means that engineers are not required to define explicit instructions to solve a given problem; the method can discover a sufficient solution, whether exact or approximate.
-Accordingly, we define machine learning as follows:
-
-Machine learning refers to techniques for uncovering valuable insights from data.
-These techniques involve sophisticated mathematical models that map the input to output sets.
-A model $f: A -> B$ drawn from a hypothesis space $cal(H)$ has an internal state that captures complex relationships within the domains.
-By exposing the model to sample data and evaluating its solution against an objective function, the model continually optimises its internal state towards the goal defined by the objective function.
-As a result, it adapts behaviour, which can be thought of as learning @mitchellDisciplineMachineLearning2006 @dehouwerWhatLearningNature2013 @lecunDeepLearning2015.
-To find a suitable function, we require a learning algorithm $cal(A): D -> f$ that provides a mapping from a dataset $D subset.eq A$ to the desired function $f in cal(H)$. Multiple strategies exist to derive such a function, such as supervised and unsupervised learning @goodfellowDeepLearning2016.
+Machine learning is a subfield of computer science that provides many methods to analyse large data quantities.
+The goal of these methods is to automatically find a solution, whether exact or approximate, for a given problem or task.
+The solution is derived based on given data without explicit instructions, making it highly declarative.
+From a mathematical perspective, one aims to find a mapping $f: A -> B$, describing the task where the domain $A$ and the range $B$ can be arbitrary @mitchellDisciplineMachineLearning2006 @lecunDeepLearning2015. 
+An objective function $cal(F): (f, D) -> RR$ is then used to assess the quality of the function mapping, and based on this information, $f$'s internal state is iteratively modified to optimise its performance towards the objective function.
+This iterative process is then described by a learning algorithm $cal(A): D -> f$,  drawing a function candidate $f$ from its hypothesis space $cal(H)$, yielding the desired mapping based on sampled data $D$. 
+Note that the hypothesis space is a set of all possible functions according to a learning algorithm $cal(A)$.
+Furthermore, example $D$ is drawn from data distributions such as $p(A)$ or $p(A, B)$, determining the learning strategy (e.g., supervised or unsupervised learning), which we explain later.
+As a final remark, the process of adapting the function's behaviour based on examples is what we refer to as learning @dehouwerWhatLearningNature2013.
 
 === Neural networks
 
