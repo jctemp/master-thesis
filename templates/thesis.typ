@@ -1,10 +1,10 @@
 #let project(details, body) = {
 
-  import "../modules/cover.typ": cover
-  import "../modules/disclaimer.typ": disclaimer
-  import "../modules/acknowledgement.typ": acknowledgement
-  import "../modules/abstract_de.typ": abstract_de
-  import "../modules/abstract_en.typ": abstract_en
+  import "modules/cover.typ": cover
+  import "modules/disclaimer.typ": disclaimer
+  import "modules/acknowledgement.typ": acknowledgement
+  import "modules/abstract_de.typ": abstract_de
+  import "modules/abstract_en.typ": abstract_en
 
   // ==========================================================================
   // SETTINGS
@@ -146,6 +146,6 @@
   // Appendix.
   set heading(numbering: "A")
   counter(heading).update(0)
-  include("../modules/appendix.typ")
+  include("modules/appendix.typ")
   bibliography("../references.bib")
 }

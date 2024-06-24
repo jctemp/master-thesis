@@ -1,25 +1,27 @@
 {
-  description = "A very basic flake";
+  description = "Typst flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, flake-parts,... }@inputs: 
-  flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [
-      "x86_64-linux"
-    ];
-    perSystem = { pkgs, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
       formatter = pkgs.alejandra;
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
+          firefox
+          alejandra
           typst
           typst-live
         ];
       };
-    };
-  };
+    });
 }

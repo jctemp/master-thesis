@@ -38,6 +38,22 @@
   file = {/home/temple/Sync/zotero/storage/6IWELYZI/Balakrishnan et al. - 2018 - VoxelMorph A Learning Framework for Deformable Me.pdf}
 }
 
+@misc{battagliaRelationalInductiveBiases2018,
+  title = {Relational Inductive Biases, Deep Learning, and Graph Networks},
+  author = {Battaglia, Peter W. and Hamrick, Jessica B. and Bapst, Victor and {Sanchez-Gonzalez}, Alvaro and Zambaldi, Vinicius and Malinowski, Mateusz and Tacchetti, Andrea and Raposo, David and Santoro, Adam and Faulkner, Ryan and Gulcehre, Caglar and Song, Francis and Ballard, Andrew and Gilmer, Justin and Dahl, George and Vaswani, Ashish and Allen, Kelsey and Nash, Charles and Langston, Victoria and Dyer, Chris and Heess, Nicolas and Wierstra, Daan and Kohli, Pushmeet and Botvinick, Matt and Vinyals, Oriol and Li, Yujia and Pascanu, Razvan},
+  year = {2018},
+  month = oct,
+  number = {arXiv:1806.01261},
+  eprint = {1806.01261},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  urldate = {2024-06-20},
+  abstract = {Artificial intelligence (AI) has undergone a renaissance recently, making major progress in key domains such as vision, language, control, and decision-making. This has been due, in part, to cheap data and cheap compute resources, which have fit the natural strengths of deep learning. However, many defining characteristics of human intelligence, which developed under much different pressures, remain out of reach for current approaches. In particular, generalizing beyond one's experiences--a hallmark of human intelligence from infancy--remains a formidable challenge for modern AI. The following is part position paper, part review, and part unification. We argue that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective. Just as biology uses nature and nurture cooperatively, we reject the false choice between "hand-engineering" and "end-to-end" learning, and instead advocate for an approach which benefits from their complementary strengths. We explore how using relational inductive biases within deep learning architectures can facilitate learning about entities, relations, and rules for composing them. We present a new building block for the AI toolkit with a strong relational inductive bias--the graph network--which generalizes and extends various approaches for neural networks that operate on graphs, and provides a straightforward interface for manipulating structured knowledge and producing structured behaviors. We discuss how graph networks can support relational reasoning and combinatorial generalization, laying the foundation for more sophisticated, interpretable, and flexible patterns of reasoning. As a companion to this paper, we have released an open-source software library for building graph networks, with demonstrations of how to use them in practice.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/temple/Sync/zotero/storage/BRPE7R4B/Battaglia et al. - 2018 - Relational inductive biases, deep learning, and gr.pdf;/home/temple/Sync/zotero/storage/IEMYSYK4/1806.html}
+}
+
 @article{chenTransMorphTransformerUnsupervised2021,
   title = {{{TransMorph}}: {{Transformer}} for Unsupervised Medical Image Registration},
   shorttitle = {{{TransMorph}}},
@@ -77,6 +93,23 @@
   copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International},
   keywords = {Computation and Language (cs.CL),Computer Vision and Pattern Recognition (cs.CV),FOS: Computer and information sciences,Machine Learning (cs.LG),Machine Learning (stat.ML)},
   file = {/home/temple/Sync/zotero/storage/R4MDARMU/Cordonnier et al. - 2019 - On the Relationship between Self-Attention and Con.pdf}
+}
+
+@misc{daiTransformerXLAttentiveLanguage2019,
+  title = {Transformer-{{XL}}: {{Attentive Language Models Beyond}} a {{Fixed-Length Context}}},
+  shorttitle = {Transformer-{{XL}}},
+  author = {Dai, Zihang and Yang, Zhilin and Yang, Yiming and Carbonell, Jaime and Le, Quoc V. and Salakhutdinov, Ruslan},
+  year = {2019},
+  month = jun,
+  number = {arXiv:1901.02860},
+  eprint = {1901.02860},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  urldate = {2024-06-20},
+  abstract = {Transformers have a potential of learning longer-term dependency, but are limited by a fixed-length context in the setting of language modeling. We propose a novel neural architecture Transformer-XL that enables learning dependency beyond a fixed length without disrupting temporal coherence. It consists of a segment-level recurrence mechanism and a novel positional encoding scheme. Our method not only enables capturing longer-term dependency, but also resolves the context fragmentation problem. As a result, Transformer-XL learns dependency that is 80\% longer than RNNs and 450\% longer than vanilla Transformers, achieves better performance on both short and long sequences, and is up to 1,800+ times faster than vanilla Transformers during evaluation. Notably, we improve the state-of-the-art results of bpc/perplexity to 0.99 on enwiki8, 1.08 on text8, 18.3 on WikiText-103, 21.8 on One Billion Word, and 54.5 on Penn Treebank (without finetuning). When trained only on WikiText-103, Transformer-XL manages to generate reasonably coherent, novel text articles with thousands of tokens. Our code, pretrained models, and hyperparameters are available in both Tensorflow and PyTorch.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/temple/Sync/zotero/storage/T65GRBD8/Dai et al. - 2019 - Transformer-XL Attentive Language Models Beyond a.pdf;/home/temple/Sync/zotero/storage/L38JDT6N/1901.html}
 }
 
 @article{dehouwerWhatLearningNature2013,
@@ -126,7 +159,7 @@
   doi = {10.1109/JBHI.2018.2869700},
   urldate = {2024-05-29},
   abstract = {Deformable registration has been one of the pillars of biomedical image computing. Conventional approaches refer to the definition of a similarity criterion that, once endowed with a deformation model and a smoothness constraint, determines the optimal transformation to align two given images. The definition of this metric function is among the most critical aspects of the registration process. We argue that incorporating semantic information (in the form of anatomical segmentation maps) into the registration process will further improve the accuracy of the results. In this paper, we propose a novel weakly supervised approach to learn domain specific aggregations of conventional metrics using anatomical segmentations. This combination is learned using latent structured support vector machines (LSSVM). The learned matching criterion is integrated within a metric free optimization framework based on graphical models, resulting in a multi-metric algorithm endowed with a spatially varying similarity metric function conditioned on the anatomical structures. We provide extensive evaluation on three different datasets of CT and MRI images, showing that learned multi-metric registration outperforms single-metric approaches based on conventional similarity measures.},
-  archiveprefix = {arxiv},
+  archiveprefix = {arXiv},
   keywords = {Computer Science - Computer Vision and Pattern Recognition},
   file = {/home/temple/Sync/zotero/storage/AWWHHWXR/Ferrante et al. - 2019 - Weakly-Supervised Learning of Metric Aggregations .pdf;/home/temple/Sync/zotero/storage/G5KIME6M/1809.html}
 }
@@ -202,6 +235,23 @@
   file = {/home/temple/Sync/zotero/storage/I8KDE8NG/He et al. - 2015 - Deep Residual Learning for Image Recognition.pdf}
 }
 
+@article{hochreiterLongShortTermMemory1997,
+  title = {Long {{Short-Term Memory}}},
+  author = {Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
+  year = {1997},
+  month = nov,
+  journal = {Neural Computation},
+  volume = {9},
+  number = {8},
+  pages = {1735--1780},
+  issn = {0899-7667, 1530-888X},
+  doi = {10.1162/neco.1997.9.8.1735},
+  urldate = {2024-06-18},
+  abstract = {Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.},
+  langid = {english},
+  file = {/home/temple/Sync/zotero/storage/ST6YR4YP/Hochreiter and Schmidhuber - 1997 - Long Short-Term Memory.pdf}
+}
+
 @article{hornikMultilayerFeedforwardNetworks1989,
   title = {Multilayer Feedforward Networks Are Universal Approximators},
   author = {Hornik, Kurt and Stinchcombe, Maxwell and White, Halbert},
@@ -244,6 +294,22 @@
   copyright = {arXiv.org perpetual, non-exclusive license},
   keywords = {Computer Vision and Pattern Recognition (cs.CV),FOS: Computer and information sciences,FOS: Electrical engineering electronic engineering information engineering,Image and Video Processing (eess.IV),Machine Learning (cs.LG),Machine Learning (stat.ML)},
   file = {/home/temple/Sync/zotero/storage/FGMRRIB9/Kim et al. - 2020 - CycleMorph Cycle Consistent Unsupervised Deformab.pdf;/home/temple/Sync/zotero/storage/HNM6HHY3/ants2.pdf}
+}
+
+@misc{kovalevaRevealingDarkSecrets2019,
+  title = {Revealing the {{Dark Secrets}} of {{BERT}}},
+  author = {Kovaleva, Olga and Romanov, Alexey and Rogers, Anna and Rumshisky, Anna},
+  year = {2019},
+  month = sep,
+  number = {arXiv:1908.08593},
+  eprint = {1908.08593},
+  primaryclass = {cs, stat},
+  publisher = {arXiv},
+  urldate = {2024-06-20},
+  abstract = {BERT-based architectures currently give state-of-the-art performance on many NLP tasks, but little is known about the exact mechanisms that contribute to its success. In the current work, we focus on the interpretation of self-attention, which is one of the fundamental underlying components of BERT. Using a subset of GLUE tasks and a set of handcrafted features-of-interest, we propose the methodology and carry out a qualitative and quantitative analysis of the information encoded by the individual BERT's heads. Our findings suggest that there is a limited set of attention patterns that are repeated across different heads, indicating the overall model overparametrization. While different heads consistently use the same attention patterns, they have varying impact on performance across different tasks. We show that manually disabling attention in certain heads leads to a performance improvement over the regular fine-tuned BERT models.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/temple/Sync/zotero/storage/MBVHRFJ9/Kovaleva et al. - 2019 - Revealing the Dark Secrets of BERT.pdf;/home/temple/Sync/zotero/storage/SEMQKP6V/1908.html}
 }
 
 @article{lecunDeepLearning2015,
@@ -355,6 +421,38 @@
   isbn = {978-3-319-24573-7 978-3-319-24574-4},
   langid = {english},
   file = {/home/temple/Sync/zotero/storage/K5ER8ND3/Ronneberger et al. - 2015 - U-Net Convolutional Networks for Biomedical Image.pdf}
+}
+
+@misc{serranoAttentionInterpretable2019,
+  title = {Is {{Attention Interpretable}}?},
+  author = {Serrano, Sofia and Smith, Noah A.},
+  year = {2019},
+  month = jun,
+  number = {arXiv:1906.03731},
+  eprint = {1906.03731},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  urldate = {2024-06-20},
+  abstract = {Attention mechanisms have recently boosted performance on a range of NLP tasks. Because attention layers explicitly weight input components' representations, it is also often assumed that attention can be used to identify information that models found important (e.g., specific contextualized word tokens). We test whether that assumption holds by manipulating attention weights in already-trained text classification models and analyzing the resulting differences in their predictions. While we observe some ways in which higher attention weights correlate with greater impact on model predictions, we also find many ways in which this does not hold, i.e., where gradient-based rankings of attention weights better predict their effects than their magnitudes. We conclude that while attention noisily predicts input components' overall importance to a model, it is by no means a fail-safe indicator.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language},
+  file = {/home/temple/Sync/zotero/storage/5J5MQ62T/Serrano and Smith - 2019 - Is Attention Interpretable.pdf;/home/temple/Sync/zotero/storage/VS2XIYJU/1906.html}
+}
+
+@misc{sutskeverSequenceSequenceLearning2014,
+  title = {Sequence to {{Sequence Learning}} with {{Neural Networks}}},
+  author = {Sutskever, Ilya and Vinyals, Oriol and Le, Quoc V.},
+  year = {2014},
+  month = dec,
+  number = {arXiv:1409.3215},
+  eprint = {1409.3215},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  urldate = {2024-06-20},
+  abstract = {Deep Neural Networks (DNNs) are powerful models that have achieved excellent performance on difficult learning tasks. Although DNNs work well whenever large labeled training sets are available, they cannot be used to map sequences to sequences. In this paper, we present a general end-to-end approach to sequence learning that makes minimal assumptions on the sequence structure. Our method uses a multilayered Long Short-Term Memory (LSTM) to map the input sequence to a vector of a fixed dimensionality, and then another deep LSTM to decode the target sequence from the vector. Our main result is that on an English to French translation task from the WMT'14 dataset, the translations produced by the LSTM achieve a BLEU score of 34.8 on the entire test set, where the LSTM's BLEU score was penalized on out-of-vocabulary words. Additionally, the LSTM did not have difficulty on long sentences. For comparison, a phrase-based SMT system achieves a BLEU score of 33.3 on the same dataset. When we used the LSTM to rerank the 1000 hypotheses produced by the aforementioned SMT system, its BLEU score increases to 36.5, which is close to the previous best result on this task. The LSTM also learned sensible phrase and sentence representations that are sensitive to word order and are relatively invariant to the active and the passive voice. Finally, we found that reversing the order of the words in all source sentences (but not target sentences) improved the LSTM's performance markedly, because doing so introduced many short term dependencies between the source and the target sentence which made the optimization problem easier.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
+  file = {/home/temple/Sync/zotero/storage/4TNLTGLN/Sutskever et al. - 2014 - Sequence to Sequence Learning with Neural Networks.pdf;/home/temple/Sync/zotero/storage/9TUDRNES/1409.html}
 }
 
 @article{vaswaniAttentionAllYou2017,
