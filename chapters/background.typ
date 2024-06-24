@@ -83,16 +83,18 @@ Likewise, gradient changes that are too influential can cause the same problem.
 
 === Supervised and unsupervised learning
 
-The difference between supervised and unsupervised learning is the incorporation of ground truth data, which affects the structure of the dataset $D$ and the objective function $cal(F)$.
-We assume a function $f: A -> B$ and aim to find an optimal mapping between the two sets.
+Supervised and unsupervised learning are two learning strategies relevant to this thesis.
+We select one depending on the data's distribution and available information.
+Accordingly, the core difference is the presence of ground truth data, affecting the structure of a dataset $D$ and the objective function $cal(F)$
+Recall that the function $f$ has a domain $A$ and a range $B$ from which one can pull samples.
 
-For supervised learning, the dataset $D:= {(bold(x), bold(y)): bold(x) in A, bold(y) in B}$ consists of data points represented by tuples, providing information about the input and a desired output.
-Accordingly, the learning algorithm $cal(A)$ will present a function $f$ providing an output $bold(hat(y)) approx bold(y)$ given $bold(x)$ as $P{bold(hat(y)) | bold(x)}$ @goodfellowDeepLearning2016.
-The supervision signal is incorporated in the objective function $cal(F)(bold(x), bold(y))$, which is often acquired through manual labour.
-Therefore, it is not applicable for all tasks. The objective function measures the error between output and ground truth, and we average the error score over all training examples @lecunDeepLearning2015.
+Supervised learning has ground truth data $D:= {(bold(x), bold(y)): bold(x) in A, bold(y) in B}$, which we indicate with tuples in the dataset.
+Owing to this, an objective function can measure the difference between the function's output $bold(hat(y))$ and the target $bold(y)$ given the corresponding $bold(x)$ @goodfellowDeepLearning2016 @lecunDeepLearning2015.
+The supervision signal enables training based on expected outputs often acquired through manual labour.
+Therefore, it is not applicable for all tasks.
 
 In contrast to supervised learning, unsupervised learning does not require ground truth data @lecunDeepLearning2015. 
-It aims to learn the probability distribution $p_"data"$ of a dataset $D:= {bold(x): bold(x) in A} space "and" space D subset.eq A$. 
+It aims to learn the probability distribution $p_"data"$ of a dataset $D:= {bold(x): bold(x) in A}, space D subset.eq A$. 
 Hence, it involves extracting distribution properties based on the data's structure @goodfellowDeepLearning2016 without a supervision signal.
 Instead, unsupervised learning focuses on finding the data's best representation regarding penalties or constraints regarding $cal(F)(bold(x))$.
 
