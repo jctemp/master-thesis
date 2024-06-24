@@ -21,13 +21,13 @@ As a final remark, the process of adapting the function's behaviour based on exa
 
 === Neural networks
 
-Neural networks are one of the many techniques used in machine learning.
+Neural networks are one of the many learning algorithms used in machine learning.
 They are inspired by neurons observed in neurological systems in nature @goodfellowDeepLearning2016
 Neurons experience excitement (input), causing a reaction (output), which can be mathematically defined as seen in @neuron.
 Nowadays, these networks are recognised as a universal approximator for any measurable function @hornikMultilayerFeedforwardNetworks1989, achieving statistical generalisation. 
 A neuron has an input vector $bold(x)$, which undergoes a linear transformation with learnable weights $bold(w)$ and a bias $b$. 
 The transformation projects the input to a new $n$-dimensional space passed to an activation function $sigma$.
-The activation function is non-linear, like sigmoid, tanh and rectified linear unit (ReLU), which is crucial as it makes the output potentially linearly separable for other neurons.
+The activation function is non-linear, like sigmoid, tanh and rectified linear unit (ReLU), which is crucial as it makes the output potentially linearly separable for other neurons @lecunDeepLearning2015.
 
 $
 a = sigma(bold(x) bold(w)^top + b)
@@ -57,24 +57,29 @@ $ <wandb>
 Note that the hypothesis space expands with the addition of neurons and layers, as the increased number of parameters and non-linear activation functions enable a wider range of discoverable functions.
 We refer to the XOR problem @goodfellowDeepLearning2016.
 
-=== Gradient descent
+=== Gradient-based optimisation
 
-Gradient descent is a numerical optimisation technique. 
-Given a neural network representing a function $f(bold(x); bold(theta))$, we aim to minimise the numerical output of a differentiable objective function $cal(F)$ @goodfellowDeepLearning2016.
-The objective function measures the output $bold(hat(y))$ based on domain-specific constraints.
-Gradient descent computes the partial derivatives $nabla bold(theta)$ to obtain the change concerning the global function's output @lecunDeepLearning2015. 
-Formally, the optimisation process can be expressed as:
+The neural networks have an internal state described by their weights and biases.
+Further, we denoted all learnable parameters of a network with $bold(theta)$.
+At first, the parameters are random, which we want to modify to meaningful values.
+Accordingly, researchers employed the gradient-based numerical optimisation technique.
+
+Given a network with parameters $f(bold(x); bold(theta))$, we aim to minimise the numerical output of a differentiable objective function $cal(F)$ @goodfellowDeepLearning2016.
+Recall that the objective function is the task the network aims to solve.
+One can compute the partial derivatives $nabla bold(theta)$ for the parameters $bold(theta)$, with respect to the networks output $bold(hat(y))$ and the objective function $cal(F)$ @lecunDeepLearning2015.
+These gradients are then used to adjust the weights to optimise the objective function's output.
+
+For example, we can define the optimisation problem, as in @optimisation
+The optimal function $f^*$ is found by changing the parameters $bold(theta)$.
+The equation states that we search for parameters $bold(theta)$ that minimise the objective function over all data points given a probability distribution.
 
 $
-f^* = op("argmin", limits: #true)_f EE_{bold(x) ~ p_"data"} cal(F)(bold(x))
-$<eq-optim>
+f^* = op("argmin", limits: #true)_bold(theta) EE_{bold(x) ~ p_"data"} cal(F)(f_bold(theta), bold(x))
+$<optimisation>
 
-The equation @eq-optim states that we desire to uncover a $f$ in the hypothesis space that minimises $cal(F)(bold(x))$ over all data points given $p_"data"$, a probability distribution.
-Note that the hypothesis space is a function space containing all sound functions with the expected mapping. 
-
-The $cal(F)$'s exact structure depends on the domain and task we aim to solve. 
-Further, the data can provide ground truth values that can be used during optimisation.
-Hence, we differentiate between two approaches for optimisation: supervised and unsupervised learning.
+The quality of the found solutions highly depends on how well the objective function models the task.
+A poor objective function leads to poor results.
+Likewise, gradient changes that are too influential can cause the same problem.
 
 === Supervised and unsupervised learning
 
