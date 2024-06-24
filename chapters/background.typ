@@ -1,3 +1,6 @@
+// #bibliography("../references.bib")
+// #set math.equation(numbering: "1.1")
+
 = Background
 
 This chapter aims to provide foundational knowledge about machine learning and image registration.
@@ -23,12 +26,36 @@ They are inspired by neurons observed in neurological systems in nature @goodfel
 Neurons experience excitement (input), causing a reaction (output), which can be mathematically defined as seen in @neuron.
 Nowadays, these networks are recognised as a universal approximator for any measurable function @hornikMultilayerFeedforwardNetworks1989, achieving statistical generalisation. 
 A neuron has an input vector $bold(x)$, which undergoes a linear transformation with learnable weights $bold(w)$ and a bias $b$. 
-The transformation projects the input to a new high-dimensional space passed to an activation function.
-The activation function is non-linear, like sigmoid tanh and rectified linear unit (ReLU), which is crucial as it makes the output potentially linearly separable for other neurons.
+The transformation projects the input to a new $n$-dimensional space passed to an activation function $sigma$.
+The activation function is non-linear, like sigmoid, tanh and rectified linear unit (ReLU), which is crucial as it makes the output potentially linearly separable for other neurons.
 
 $
-bold(a) &= sigma(bold(x) bold(w)^top + b)
+a = sigma(bold(x) bold(w)^top + b)
 $ <neuron>
+
+Solely using a single neuron is insufficient for more complex problems like XOR @goodfellowDeepLearning2016.
+Therefore, one employs layers defined in @layer to obtain a multi-dimensional intermediate representation $bold(a)$.
+Layers consist of multiple neurons, contributing a feature to the new representation for the next layer.
+
+$
+bold(a) = sigma(bold(x) bold(W)^[l] + bold(b)^[l])\
+$ <layer>
+
+We describe the weights and bias with vectors and matrices, as in @wandb.
+The weights matrix holds column-wise $n$ neurons and row-wise the weights for $n-1$ input features.
+A vector is used to provide bias for each neuron.
+
+$
+bold(W)^[l] = mat(
+ w_00, ..., w_(0n^[l]);
+  dots.v, dots.down, dots.v;
+ w_(n^[l-1]0), ..., w_(n^[l-1]n^[l]);
+) in RR^(n^[l-1] times n^[l]), quad
+bold(b)^[l] = mat(b_1, ..., b_(n^[l])) in RR^(1 times n^[l])
+$ <wandb>
+
+Note that the hypothesis space expands with the addition of neurons and layers, as the increased number of parameters and non-linear activation functions enable a wider range of discoverable functions.
+We refer to the XOR problem @goodfellowDeepLearning2016.
 
 === Gradient descent
 
