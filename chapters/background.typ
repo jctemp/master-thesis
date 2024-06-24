@@ -60,16 +60,16 @@ We refer to the XOR problem @goodfellowDeepLearning2016.
 === Gradient-based optimisation
 
 The neural networks have an internal state described by their weights and biases.
-Further, we denoted all learnable parameters of a network with $bold(theta)$.
+Additionally, we denoted all learnable parameters of a network with $bold(theta)$.
 At first, the parameters are random, which we want to modify to meaningful values.
-Accordingly, researchers employed the gradient-based numerical optimisation technique.
+Thus, researchers employed the gradient-based numerical optimisation technique.
 
 Given a network with parameters $f(bold(x); bold(theta))$, we aim to minimise the numerical output of a differentiable objective function $cal(F)$ @goodfellowDeepLearning2016.
-Recall that the objective function is the task the network aims to solve.
+Recollect that the objective function is the task the network aims to solve.
 One can compute the partial derivatives $nabla bold(theta)$ for the parameters $bold(theta)$, with respect to the networks output $bold(hat(y))$ and the objective function $cal(F)$ @lecunDeepLearning2015.
 These gradients are then used to adjust the weights to optimise the objective function's output.
 
-For example, we can define the optimisation problem, as in @optimisation
+For example, we can express the optimisation problem, as in @optimisation
 The optimal function $f^*$ is found by changing the parameters $bold(theta)$.
 The equation states that we search for parameters $bold(theta)$ that minimise the objective function over all data points given a probability distribution.
 
@@ -77,7 +77,7 @@ $
 f^* = op("argmin", limits: #true)_bold(theta) EE_{bold(x) ~ p_"data"} cal(F)(f_bold(theta), bold(x))
 $<optimisation>
 
-The quality of the found solutions highly depends on how well the objective function models the task.
+The quality of the solutions found highly depends on how well the objective function models the real-world task.
 A poor objective function leads to poor results.
 Likewise, gradient changes that are too influential can cause the same problem.
 
