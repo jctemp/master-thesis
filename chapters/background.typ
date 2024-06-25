@@ -1,7 +1,7 @@
 // #bibliography("../references.bib")
 // #set math.equation(numbering: "1.1")
 
-= Background
+= Background <ch-background>
 
 This chapter aims to provide foundational knowledge about machine learning and image registration.
 We start with machine learning, exploring the subarea of deep learning. 
@@ -98,6 +98,7 @@ It aims to learn the probability distribution $p_"data"$ of a dataset $D:= {bold
 Hence, it involves extracting distribution properties based on the data's structure @goodfellowDeepLearning2016 without a supervision signal.
 Instead, unsupervised learning focuses on finding the data's best representation regarding penalties or constraints regarding $cal(F)(bold(x))$.
 
+// TODO CONTINUE WITH REWRITE
 == Deep learning
 
 Deep learning is a subfield of machine learning that builds upon the concept of neural networks. @lecunDeepLearning2015 @goodfellowDeepLearning2016.
@@ -259,7 +260,7 @@ The shifted-window self-attention balances local attention and information flow 
 #figure(
   image("../figures/w-msa.png"), 
   caption: [
- The figure depicts the window-based multi-head self-attention (W-MSA) and shifted W-MSA.
+ The figure depicts the window-based multi-head self-attention (W-MSA) and shifted W-MSA. Adapted and modified from @liuSwinTransformerHierarchical2021.
  ] 
 )<window-based-self-attention>
 
@@ -269,9 +270,100 @@ Note that semantic information is encoded differently but is irrelevant for deco
 
 == Image registration
 
+In this section, we will define image series registration. 
+This will then be put into context with the medical field. Finally, we will present the two registration options: Advanced normalisation tool @avantsAdvancedNormalizationTools and deep learning @chenTransMorphTransformerUnsupervised2021.
+
+=== Image series registration
+
+Hammoudeh and Dupont presented a general definition of image registration @hammoudehDeepLearningMedical2023. 
+Their definition presented a more general understanding of image registration. 
+However, they did not elaborate on how the correspondence space (a shared space allowing the usage of measures) works and what exactly a neural network could potentially learn.
+Therefore, we decided to derive a general definition for image series alignment, making the definition more explicit without losing generality.
+
+First, we define an image $I: [0, N] times [0, M] -> RR^+$ as a function that maps two-dimensional points to a positive real-valued number, where the image has a width ($N in NN$) and a height ($M in NN$).
+Moreover, one can expand the definition to account for multi-channel images.
+
+Next, consider a manifold $(M, cal(T))$ with $n$-dimensions with two spatial dimensions, one temporal dimension and $k$ latent dimensions. 
+An image $I^((t))$ is represented by an open set $U in cal(T)$, where all open sets $U$ overlap in the spatial and latent dimensions and are disjoint in the temporal dimension.
+A sampled image within the image series is indexed with $t in T subset.eq NN_0$, where $T$ is the series' duration.
+Finally, each open set has a corresponding chart $(h, U)$ with $h: U -> RR^2$, mapping points of a manifold to a local Euclidean space.
+
+Given two open sets $U_0$ and $U_1$ representing images with their respective charts, we can define a transition function $phi.alt: RR^2 -> RR^2$ using the mappings in the charts. 
+Specifically, the transition function is $phi.alt_(01) := h_1 compose h^(-1)_0$, which maps the image to the manifold and then to the space of the other image, yielding a correspondence space.
+
+With that consider two images with their open sets $I^((s))$ and $I^((t))$ where $s != t$. 
+Two images are perfectly aligned if $forall bold(p) in [0, N] times [0, M] : I^((s))(bold(p)) = I^((t))(phi.alt_"st" (bold(p)))$ where $N, M in NN$. 
+For simplicity, we denote the perfect alignment of two images with $I^((s)) = I^((t))$.
+One can make the alignment less strict by defining an alignment function $a: (I times I times RR^2 times RR) -> RR$, comparing pixels ($m=0$) or neighbourhoods.
+
+@image-registration illustrates the conceptual idea of an image series with a manifold.
+A neural network would learn a manifold with its corresponding transitions to allow a registration.
+Furthermore, one can impose more constraints on the transition functions, such as smoothness, to get other desirable properties.
+In the illustration, $(m, U_0)$ and $(h, U_1)$ are charts where an inverse exists.
+The two open sets overlap in the non-visualisable latent dimension but are indicated by the dotted lines.
+Conversely, a transition function $t$ exists to transition between the two local Euclidean spaces. 
+
+#figure(
+  image("../figures/image-registration.png"),
+  caption: [
+    An image series with a corresponding manifold, defining the relationship between images. Own illustration.
+  ]
+) <image-registration>
+
+// TODO CONTINUE WITH WRITE
 === Medical application
 
+Image registration (rigid, affine, and deformable) is crucial to modern medical imaging @zouReviewDeepLearningbased2022. 
+It enables the combination of images from different modalities and the alignment of image volumes or series. 
+There exist two approaches to solving this task: symmetric image normalisation @avantsSymmetricDiffeomorphicImage2008 and deep learning @balakrishnanVoxelMorphLearningFramework2018 @chenTransMorphTransformerUnsupervised2021.
+We will elaborate on both in the upcoming sections.
+
+The research commonly describes image registration with two-dimensional images: a moving image $I^(("s"))$ and a fixed image $I^(("t"))$.
+The registration aims to optimally align the moving image spatially with the fixed image @zouReviewDeepLearningbased2022 @fuDeepLearningMedical2019. 
+For example, we have a heart magnetic resonance scan with alternating contractions and relaxations @hammoudehDeepLearningMedical2023. 
+The medical registration method would analyse the spatial deformations and provide a deformation vector field $phi.alt$, which one can use with spatial transformation and resampling to remove motion effectively.
+
+In the context of an image series, the fixed image is determined by some arbitrary criteria.
+For example, given an image series of a respiratory cycle depicting the lung, one can choose the image at the midpoint of the cycle.
+The registration target highly relies on the task and chosen registration method, as a different target image may benefit registration quality.
+
+// brief, high-level overview???
 === Traditional techniques
+
+Symmetric normalisation (SyN) @avantsSymmetricDiffeomorphicImage2008 is a method to register a source image $I^(("s"))$ to a target image $I^(("t"))$. 
+The registration is a symmetric formulation that works regardless of the similarity measure. 
+Symmetry refers to considering two mappings $phi.alt_1$ and $phi.alt_2$ used to deform $I^(("s"))$ and $I^(("t"))$ to each other. 
+It ensures that the path from $I^(("s"))$ to $I^(("t"))$ is the same path from $I^(("t"))$ to $I^(("s"))$, finding correspondences with equal consideration of both images. 
+Accordingly, the key concept is to minimise an energy function $E_"sym"$ @avantsSymmetricDiffeomorphicImage2008 @avantsAdvancedNormalizationTools, which measures smoothness and similarity between deformed images. 
+One can derive the Euler-Lagrange equations based on the energy function to compute the partial gradients for $phi.alt$ @avantsSymmetricDiffeomorphicImage2008. 
+These gradients are used to update the mappings iteratively using gradient-based optimisations. 
+Due to its formulation, the mapping obtained using SyN is guaranteed to be diffeomorphic (a $C^2$ continuous function), ensuring smooth and invertible transformations, with some minor errors owing to interpolation.
+
+@eq-syn shows the energy functions.
+The first integral describes the costs for the transformation using the velocity field $v$ and the $L^2$ norm.
+The second integral measures the change in difference between the source and target image.
+
+$
+E_"sym" (I^(("s")),I^(("t"))) = 
+inf_(phi.alt_1, phi.alt_2) space &integral_(bold(x) in Omega) integral_(t=0)^0.5 (||v_1(bold(x),t)||^2 + ||v_2(bold(x),t)||^2) d t d bold(x) +\
+&integral_(bold(x) in Omega)|I^(("s"))(phi.alt_1(bold(x),0.5)) - I^(("t"))(phi.alt_2(bold(x),0.5))|^2 d bold(x)\
+$ <eq-syn>
+
+Note that $phi.alt$ is a functional where the velocity field describes its rate of change; see @eq-syn-phi-diff.
+Accordingly, we consider the spatial and temporal changes in the deformation.
+
+$
+(d phi.alt_i (bold(x),t))/(d t) = v_i (phi.alt_i (bold(x),t), t)
+$ <eq-syn-phi-diff>
 
 === Deep learning techniques
 
+Recall that deep learning employs neural networks to approximate functions.
+In the context of image registration, a neural network would learn the structure of a manifold $(M, cal(T))$ with the corresponding charts, allowing approximate transition functions for any given image series.
+Hence, we have a global representation for a series, enabling registration @zouReviewDeepLearningbased2022.
+From a practical standpoint, a network's parameters are optimised based on a similarity measure operating in the local Euclidean space of the open sets.
+Moreover, the neural network predicts a displacement vector field $phi.alt$, which is used to deform a moving to a fixed image.
+As images are discrete, one must employ resampling and interpolation to get a valid transform; otherwise, some pixels might not have a corresponding pixel in the fixed image @zouReviewDeepLearningbased2022.
+Furthermore, differentiable spatial transformer networks must be incorporated in every network because they transform images based on a vector field, allowing for end-to-end training of a given network @fuDeepLearningMedical2019 @jaderbergSpatialTransformerNetworks2015.
+In the medical context, CNNs are successful, such as VoxelMorph @balakrishnanVoxelMorphLearningFramework2018.
+Also, researchers proposed alternative networks leveraging vision transformer-building hybrid networks like TransMorph @chenTransMorphTransformerUnsupervised2021.
