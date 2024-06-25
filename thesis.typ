@@ -3,8 +3,10 @@
 
 #show: body => project(details, body)
 
-= Introduction
-
+= Introduction <ch-introduction>
+// As aforementioned, the thesis tackles the problem of registration for a lung image series.
+// The currently used tool is the advanced normalisation tool @avantsAdvancedNormalizationTools.
+// However, it has the drawback of being significantly slower than deep learning alternatives @fuDeepLearningMedical2019 @chenTransMorphTransformerUnsupervised2021.
 // Medicine is a continuously developing area that benefits from advancements in computer science.
 // More computational capacity, enabling more complex and expensive operations, allowed the integration of computer-aided technologies in everyday clinical practice.
 // Furthermore, the rapid development in machine learning creates new opportunities for researchers to introduce novel or optimise current state-of-the-art methods to increase efficiency in any aspect of computer-aided medicine.
@@ -63,7 +65,7 @@
 
 #include "chapters/background.typ"
 
-= Related Work
+= Related Work <ch-related-work>
 
 #rect(
   width: 100%,

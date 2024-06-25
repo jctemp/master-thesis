@@ -33,7 +33,7 @@
   )
 
   show math.equation: set text(weight: 400)
-  set math.equation(numbering: "(1)")
+  set math.equation(numbering: "(1.1)")
 
   show heading: set block(below: 1.2em, above: 1.75em)
   show heading.where(level:1): set text(size: 2 * details.fontSize)

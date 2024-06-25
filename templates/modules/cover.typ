@@ -17,5 +17,7 @@
     #details.date
   ])
 
+  place(bottom + left, dy: 10mm, image("../assets/Medizinische_Hochschule_Hannover_logo.png", width: 100mm))
+
   place(bottom + right, dy: 10mm, image("../assets/logo_colour.png", width: 40mm))
 }
