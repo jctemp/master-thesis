@@ -77,7 +77,7 @@
           outset: 4pt,
           width: 100%, grid(
           columns: (auto, 1fr, auto),
-          strong(it.body),
+          link(it-loc, strong(it.body)),
           strong(" " + box(width: 1fr, repeat[.])),
           strong(" " + [#it-loc.page()])
         )
@@ -86,7 +86,7 @@
         box(width: 100%, grid(
           columns: (auto, 1fr, auto),
           gutter: 1em,
-          align(left, it.body),
+          link(it-loc, align(left, it.body)),
           " " + box(width: 1fr, repeat[.]),
           " " + [#it-loc.page()]
         ))
@@ -115,7 +115,7 @@
           outset: 4pt,
           width: 100%, grid(
           columns: (auto, 1fr, auto),
-          strong(it.body),
+          link(it-loc, strong(it.body)),
           strong(" " + box(width: 1fr, repeat[.])),
           strong(" " + [#it-loc.page()])
         )
@@ -124,7 +124,7 @@
         box(width: 100%, grid(
           columns: (auto, 1fr, auto),
           gutter: 1em,
-          align(left, it.body),
+          link(it-loc, align(left, it.body)),
           " " + box(width: 1fr, repeat[.]),
           " " + [#it-loc.page()]
         ))
