@@ -14,22 +14,20 @@
     #details.degree's thesis in #details.field
     #linebreak()
     #linebreak()
-    {
-      #let today = details.date
-      #let remainder = calc.rem(today.day(), 10)
-      #let suffix = "[month repr:long] [year]"
+    #let today = details.date
+    #let remainder = calc.rem(today.day(), 10)
+    #let suffix = "[month repr:long] [year]"
 
-      #today.display(
-        if remainder == 1 {
-          "[day padding:none]st "
-        } else if remainder == 2 {
-          "[day padding:none]nd "
-        } else if remainder == 3 {
-          "[day padding:none]rd "
-        } else {
-          "[day padding:none]th "
-        } + suffix)
-      }
+    #today.display(
+      if remainder == 1 {
+        "[day padding:none]st "
+      } else if remainder == 2 {
+        "[day padding:none]nd "
+      } else if remainder == 3 {
+        "[day padding:none]rd "
+      } else {
+        "[day padding:none]th "
+      } + suffix)
     ])
 
   place(bottom + left, dy: 10mm, image("../assets/Medizinische_Hochschule_Hannover_logo.png", width: 100mm))

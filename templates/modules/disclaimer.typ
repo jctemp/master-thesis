@@ -16,6 +16,22 @@
     )
   )
 
+
+  let today = details.date
+  let remainder = calc.rem(today.day(), 10)
+  let suffix = "[month repr:long] [year]"
+  let date = today.display(
+    if remainder == 1 {
+      "[day padding:none]st "
+    } else if remainder == 2 {
+      "[day padding:none]nd "
+    } else if remainder == 3 {
+      "[day padding:none]rd "
+    } else {
+      "[day padding:none]th "
+    } + suffix)
+
+
   align(top, grid(
     columns: (30mm, 1fr),
     gutter: 2 * details.fontSize,
@@ -61,7 +77,7 @@
     #grid(
         columns: 2,
         gutter: 1fr,
-        "Hannover, " + details.date, details.author.name
+        "Hannover, " + date, details.author.name
     ) 
   ])
 }
