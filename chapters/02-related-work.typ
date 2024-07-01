@@ -11,5 +11,12 @@
 
 == TransMorph
 
+#figure(
+  image("../figures/transmorph.png"),
+  caption: [
+    TransMorph architecture.
+  ]
+)
+
 == Group-oriented registration
 

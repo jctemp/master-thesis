@@ -21,6 +21,7 @@
           alejandra
           typst
           typst-live
+          imagemagick
         ];
       };
     });
